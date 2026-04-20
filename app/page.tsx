@@ -59,7 +59,7 @@ export default function Home() {
         </section>
 
         {/* Trust strip */}
-        <section className="border-y border-outline-variant/10 bg-surface-container-low py-12">
+        <section className="border-y border-outline-variant/10 bg-surface-variant py-12">
           <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-8 px-8 opacity-60 grayscale transition-all duration-500 hover:grayscale-0 md:gap-16">
             {["Next.js", "React", "Node", "Cloud Architecture"].map((name) => (
               <div key={name} className="flex items-center gap-2">
