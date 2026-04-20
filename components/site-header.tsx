@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-type NavPage = "home" | "about" | "contact";
+type NavPage = "home" | "works" | "about" | "contact";
 
 type SiteHeaderProps = {
   activePage?: NavPage;
@@ -32,12 +32,9 @@ export function SiteHeader({ activePage = "home" }: SiteHeaderProps) {
           <Link href="/" className={navClass(activePage === "home")}>
             Home
           </Link>
-          <a
-            className="font-headline text-sm font-semibold text-on-surface-variant transition-colors hover:text-primary"
-            href="#"
-          >
+          <Link href="/works" className={navClass(activePage === "works")}>
             Works
-          </a>
+          </Link>
           <Link href="/about" className={navClass(activePage === "about")}>
             About
           </Link>
