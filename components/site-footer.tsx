@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-type NavPage = "home" | "about";
+type NavPage = "home" | "about" | "contact";
 
 type SiteFooterProps = {
   activePage?: NavPage;
@@ -51,9 +51,9 @@ export function SiteFooter({ activePage = "home" }: SiteFooterProps) {
                 </Link>
               </li>
               <li>
-                <a className={sitemapClass(false)} href="#">
+                <Link className={sitemapClass(activePage === "contact")} href="/contact">
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
