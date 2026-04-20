@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-type NavPage = "home" | "about" | "contact";
+type NavPage = "home" | "works" | "about" | "contact";
 
 type SiteFooterProps = {
   activePage?: NavPage;
@@ -41,9 +41,9 @@ export function SiteFooter({ activePage = "home" }: SiteFooterProps) {
                 </Link>
               </li>
               <li>
-                <a className={sitemapClass(false)} href="#">
+                <Link className={sitemapClass(activePage === "works")} href="/works">
                   Works
-                </a>
+                </Link>
               </li>
               <li>
                 <Link className={sitemapClass(activePage === "about")} href="/about">
@@ -78,7 +78,7 @@ export function SiteFooter({ activePage = "home" }: SiteFooterProps) {
             </p>
             <div className="flex gap-2">
               <input
-                className="flex-1 rounded-lg border-0 bg-white text-xs focus:ring-2 focus:ring-primary/40"
+                className="flex-1 rounded-lg border-0 bg-white text-xs focus:ring-2 focus:ring-primary/40 p-1"
                 placeholder="Email"
                 type="text"
               />

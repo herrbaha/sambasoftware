@@ -16,6 +16,16 @@ const nextConfig: NextConfig = {
         hostname: "lh3.googleusercontent.com",
         pathname: "/aida-public/**",
       },
+      {
+        protocol: "https",
+        hostname: "image.thum.io",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "s.wordpress.com",
+        pathname: "/mshots/**",
+      },
     ],
   },
 };
