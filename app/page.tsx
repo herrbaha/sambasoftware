@@ -1,15 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 const heroImage =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuA0-rAA4C6eX-0oTVlooKokW-6ZiM4sROeuilF7fBM57mqDEenrvONe72aX6V_zhCcTW8q68W_QUOo7oTsC0a0jXLKWKJX9x2mYQ9x7mhn0XQ2sNeZkauwhy2MrzkuejSgopCwmhEHq1ynE-LDm9Vl1b9SYAtTOGVQo4d0S8kbMClcVlfOyGBDzmS8ui51QZHXQ9b5MyFN2Lia_5MpOUghOJeYjzd03wWEiQJudV5wchrnqyxEQyUCyYvrk3_FUzvDNUrWu3I9P98U4";
 
-const projectWideImage =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBFTRG0RTkk173l_sZ4baOkzIR3OTnGYp4EYHCKR34XXkUeWpghKtSeZCTzWa36X7Q4Gqq2u66z1YVeG415ix0_clrcHvv1uIhObpP4ykOIz4l8zmoxk8F_AthEAdzANrrqg_ruTvZrwWsPouF3OuyFrwXSBuGSZIzEeXOil3dtjq8F0H2aEjmD8ltCyFFJ9zCss-WxCi7x7x8ri4HboHmhOa0Hshvx3FDbmuLMPHCBwfqhW8ggTsqO1dHjJNR455bt4XX6V2OlUxjF";
-
-const projectSquareImage =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuD9LADq8VmIyiRpJ0UIliip-VYk8yhiUpQQCWvnZdi2yc1L_VjeCcrBpySaxvQmZ-Dl2obK08KEDdl3TPx34sfAEbV1nZD68gRro-Zlf6QVtmBV_4bGHHksRwjf5f7sAtqFI9Ue1DhFtR2dNn-MGXgo0p98Us-z5SPidOkJIAVc0MQd79nO5LHXFEjaBdc8Eka88UaV5SPOLeN7um-jJdhRaoPk3CSQMyzfJJ5XuyrcY0NKACFa08bVXZeKqiV7Ojd5NSQt5K-9aP_5";
+const projectWideImage = "/works/greenstep.png";
+const projectSquareImage = "/works/theempower.png";
 
 export default function Home() {
   return (
@@ -29,18 +27,18 @@ export default function Home() {
               brands.
             </p>
             <div className="flex flex-wrap gap-4">
-              <button
-                type="button"
+              <Link
+                href="/works"
                 className="rounded-xl bg-gradient-to-br from-primary to-primary-container px-10 py-5 font-headline text-lg font-bold text-on-primary shadow-lg shadow-primary/20 transition-transform hover:scale-105"
               >
                 View work
-              </button>
-              <button
-                type="button"
+              </Link>
+              <Link
+                href="/contact"
                 className="rounded-xl bg-surface-container-highest px-10 py-5 font-headline text-lg font-bold text-on-surface transition-transform hover:scale-105"
               >
                 Contact
-              </button>
+              </Link>
             </div>
           </div>
           <div className="relative lg:col-span-5">
@@ -80,7 +78,10 @@ export default function Home() {
             <div className="h-1 w-24 rounded-full bg-primary" />
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            <div className="rounded-[2rem] bg-surface-container-low p-10 transition-colors duration-300 hover:bg-surface-container-high">
+            <Link
+              href="/works?category=web"
+              className="rounded-[2rem] bg-surface-container-low p-10 transition-colors duration-300 hover:bg-surface-container-high"
+            >
               <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-container/20">
                 <span className="material-symbols-outlined text-3xl text-primary">
                   desktop_windows
@@ -91,8 +92,11 @@ export default function Home() {
                 SaaS platforms, dashboards, and complex web applications built for
                 scale and performance.
               </p>
-            </div>
-            <div className="rounded-[2rem] bg-surface-container-low p-10 transition-colors duration-300 hover:bg-surface-container-high">
+            </Link>
+            <Link
+              href="/works?category=shopify"
+              className="rounded-[2rem] bg-surface-container-low p-10 transition-colors duration-300 hover:bg-surface-container-high"
+            >
               <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary-container/20">
                 <span className="material-symbols-outlined text-3xl text-secondary">
                   shopping_bag
@@ -103,8 +107,11 @@ export default function Home() {
                 Custom Shopify themes and headless commerce solutions that convert
                 visitors into customers.
               </p>
-            </div>
-            <div className="rounded-[2rem] bg-surface-container-low p-10 transition-colors duration-300 hover:bg-surface-container-high">
+            </Link>
+            <Link
+              href="/works?category=automation"
+              className="rounded-[2rem] bg-surface-container-low p-10 transition-colors duration-300 hover:bg-surface-container-high"
+            >
               <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-2xl bg-tertiary-container/20">
                 <span className="material-symbols-outlined text-3xl text-tertiary">
                   bolt
@@ -115,7 +122,7 @@ export default function Home() {
                 Streamlining workflows through custom integrations and API-first
                 architectures.
               </p>
-            </div>
+            </Link>
           </div>
         </section>
 
@@ -132,22 +139,22 @@ export default function Home() {
                   excellence.
                 </p>
               </div>
-              <button
-                type="button"
+              <Link
+                href="/works"
                 className="group flex items-center gap-2 font-headline font-bold text-primary"
               >
                 See all projects
                 <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">
                   arrow_forward
                 </span>
-              </button>
+              </Link>
             </div>
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
-              <div className="group cursor-pointer lg:col-span-8">
+              <Link href="/works" className="group cursor-pointer lg:col-span-8">
                 <div className="relative mb-6 aspect-[16/9] overflow-hidden rounded-[2.5rem] bg-surface-container">
                   <Image
                     src={projectWideImage}
-                    alt="Fintech Dashboard Project"
+                    alt="Greenstep Cooling Towers Project"
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 1024px) 100vw, 66vw"
@@ -156,22 +163,22 @@ export default function Home() {
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="mb-2 block text-sm font-bold uppercase tracking-widest text-primary">
-                      Fintech
+                      Industrial
                     </span>
                     <h4 className="font-headline text-3xl font-bold">
-                      Aura Banking Platform
+                      Greenstep Cooling Towers
                     </h4>
                   </div>
                   <span className="material-symbols-outlined text-4xl text-outline-variant transition-colors group-hover:text-primary">
                     north_east
                   </span>
                 </div>
-              </div>
-              <div className="group cursor-pointer lg:col-span-4">
+              </Link>
+              <Link href="/works" className="group cursor-pointer lg:col-span-4">
                 <div className="relative mb-6 aspect-square overflow-hidden rounded-[2.5rem] bg-surface-container">
                   <Image
                     src={projectSquareImage}
-                    alt="E-commerce Minimal Project"
+                    alt="The Empower Project"
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                     sizes="(max-width: 1024px) 100vw, 33vw"
@@ -180,17 +187,17 @@ export default function Home() {
                 <div className="flex items-center justify-between">
                   <div>
                     <span className="mb-2 block text-sm font-bold uppercase tracking-widest text-secondary">
-                      Lifestyle
+                      Social Impact
                     </span>
                     <h4 className="text-balance font-headline text-2xl font-bold">
-                      Nordic Goods
+                      The Empower
                     </h4>
                   </div>
                   <span className="material-symbols-outlined text-4xl text-outline-variant transition-colors group-hover:text-secondary">
                     north_east
                   </span>
                 </div>
-              </div>
+              </Link>
             </div>
           </div>
         </section>
@@ -251,12 +258,12 @@ export default function Home() {
                 Ready to build something remarkable? Let&apos;s talk about your next
                 project.
               </p>
-              <button
-                type="button"
+              <Link
+                href="/contact"
                 className="rounded-2xl bg-white px-12 py-6 font-headline text-xl font-bold text-primary shadow-2xl transition-transform hover:scale-105"
               >
                 Contact us
-              </button>
+              </Link>
             </div>
             <div className="absolute -right-64 -top-64 h-[500px] w-[500px] rounded-full bg-white/10 blur-[100px]" />
             <div className="absolute -bottom-64 -left-64 h-[500px] w-[500px] rounded-full bg-secondary-container/20 blur-[100px]" />

@@ -41,7 +41,27 @@ const projects = [
   },
 ];
 
-export default function WorksPage() {
+type WorksPageProps = {
+  searchParams?: Promise<{ category?: string }>;
+};
+
+export default async function WorksPage({ searchParams }: WorksPageProps) {
+  const params = searchParams ? await searchParams : {};
+  const categoryFilter = params?.category?.toLowerCase();
+  const normalizedFilter = categoryFilter === "ecommerce" ? "shopify" : categoryFilter;
+
+  const filteredProjects =
+    normalizedFilter && normalizedFilter !== "all"
+      ? projects.filter((project) =>
+          project.category.some((item) => item.toLowerCase() === normalizedFilter),
+        )
+      : projects;
+
+  const chipClass = (isActive: boolean) =>
+    isActive
+      ? "rounded-full bg-primary px-6 py-2 font-medium text-on-primary"
+      : "rounded-full bg-surface-container-highest px-6 py-2 text-on-surface transition-colors hover:bg-secondary-container";
+
   return (
     <>
       <SiteHeader activePage="works" />
@@ -57,25 +77,31 @@ export default function WorksPage() {
               scalable architecture, and editorial-grade implementation.
             </p>
             <div className="flex flex-wrap gap-3">
-              <span className="rounded-full bg-primary px-6 py-2 font-medium text-on-primary">
+              <Link href="/works" className={chipClass(!normalizedFilter || normalizedFilter === "all")}>
                 All
-              </span>
-              <span className="rounded-full bg-surface-container-highest px-6 py-2 text-on-surface">
+              </Link>
+              <Link href="/works?category=web" className={chipClass(normalizedFilter === "web")}>
                 Web
-              </span>
-              <span className="rounded-full bg-surface-container-highest px-6 py-2 text-on-surface">
+              </Link>
+              <Link
+                href="/works?category=shopify"
+                className={chipClass(normalizedFilter === "shopify")}
+              >
                 Shopify
-              </span>
-              <span className="rounded-full bg-surface-container-highest px-6 py-2 text-on-surface">
+              </Link>
+              <Link
+                href="/works?category=automation"
+                className={chipClass(normalizedFilter === "automation")}
+              >
                 Automation
-              </span>
+              </Link>
             </div>
           </div>
         </section>
 
         <section className="mx-auto mb-24 max-w-7xl px-8">
           <div className="grid grid-cols-1 gap-12">
-            {projects.map((project) => (
+            {filteredProjects.map((project) => (
               <article
                 key={project.name}
                 className="group overflow-hidden rounded-4xl border border-outline-variant/20 bg-surface-container-low shadow-[0_20px_60px_rgba(57,56,53,0.08)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_24px_70px_rgba(57,56,53,0.12)]"
@@ -129,6 +155,11 @@ export default function WorksPage() {
                 </div>
               </article>
             ))}
+            {filteredProjects.length === 0 && (
+              <div className="rounded-3xl border border-outline-variant/20 bg-surface-container-low p-10 text-on-surface-variant">
+                No project found for this category yet.
+              </div>
+            )}
           </div>
         </section>
 
