@@ -88,6 +88,15 @@
     backdrop-filter: blur(24px);
   }
 
+  .glass-header {
+    background: rgba(255, 251, 255, 0.8);
+    backdrop-filter: blur(24px);
+  }
+
+  .editorial-shadow {
+    box-shadow: 0 12px 40px rgba(57, 56, 53, 0.06);
+  }
+
   .material-symbols-outlined {
     font-family: "Material Symbols Outlined", sans-serif;
     font-weight: normal;

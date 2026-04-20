@@ -1,114 +1,95 @@
-export function SiteFooter() {
+import Link from "next/link";
+
+type NavPage = "home" | "about";
+
+type SiteFooterProps = {
+  activePage?: NavPage;
+};
+
+function sitemapClass(isActive: boolean) {
+  return isActive
+    ? "font-body text-sm font-medium text-primary"
+    : "font-body text-sm text-on-surface-variant/70 transition-colors hover:text-primary";
+}
+
+export function SiteFooter({ activePage = "home" }: SiteFooterProps) {
   return (
-    <footer className="w-full bg-[#fdf9f5] py-20">
+    <footer className="w-full bg-surface-variant py-20">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-8 md:grid-cols-4">
         <div className="md:col-span-1">
-          <div className="mb-8 flex items-center gap-3">
-            <span className="material-symbols-outlined text-2xl text-primary">
-              bubble_chart
-            </span>
-            <span className="font-headline text-xl font-bold text-[#393835]">
+          <div className="mb-6 flex items-center gap-2">
+            <span className="material-symbols-outlined text-xl text-primary">bubble_chart</span>
+            <span className="font-headline text-xl font-bold text-on-surface">
               Samba Software
             </span>
           </div>
-          <p className="font-body text-sm leading-relaxed text-[#393835]/70">
-            Crafting digital experiences with precision and soul. Your technical
-            partner for web and automation.
+          <p className="font-body text-sm leading-relaxed text-on-surface-variant/70">
+            A boutique software studio crafting digital experiences with technical
+            precision and human soul.
           </p>
         </div>
-        <div className="md:col-span-1">
-          <h6 className="mb-6 font-headline text-sm font-bold uppercase tracking-widest">
-            Sitemap
-          </h6>
-          <ul className="space-y-4">
-            <li>
-              <a
-                className="font-body text-sm text-[#393835]/70 transition-colors hover:text-primary"
-                href="/"
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                className="font-body text-sm text-[#393835]/70 transition-colors hover:text-primary"
-                href="#"
-              >
-                Works
-              </a>
-            </li>
-            <li>
-              <a
-                className="font-body text-sm text-[#393835]/70 transition-colors hover:text-primary"
-                href="#"
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                className="font-body text-sm text-[#393835]/70 transition-colors hover:text-primary"
-                href="#"
-              >
-                Contact
-              </a>
-            </li>
-          </ul>
+
+        <div className="grid grid-cols-2 gap-8 md:col-span-2">
+          <div>
+            <h5 className="mb-6 font-headline text-xs font-black uppercase tracking-widest text-on-surface">
+              Studio
+            </h5>
+            <ul className="space-y-4 font-body text-sm">
+              <li>
+                <Link className={sitemapClass(activePage === "home")} href="/">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <a className={sitemapClass(false)} href="#">
+                  Works
+                </a>
+              </li>
+              <li>
+                <Link className={sitemapClass(activePage === "about")} href="/about">
+                  About
+                </Link>
+              </li>
+              <li>
+                <a className={sitemapClass(false)} href="#">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 className="mb-6 font-headline text-xs font-black uppercase tracking-widest text-on-surface">
+              Connect
+            </h5>
+            <ul className="space-y-4 font-body text-sm">
+              <li><a className={sitemapClass(false)} href="#">LinkedIn</a></li>
+              <li><a className={sitemapClass(false)} href="#">GitHub</a></li>
+              <li><a className={sitemapClass(false)} href="#">X</a></li>
+              <li><a className={sitemapClass(false)} href="#">Instagram</a></li>
+            </ul>
+          </div>
         </div>
-        <div className="md:col-span-1">
-          <h6 className="mb-6 font-headline text-sm font-bold uppercase tracking-widest">
-            Connect
-          </h6>
-          <ul className="space-y-4">
-            <li>
-              <a
-                className="font-body text-sm text-[#393835]/70 transition-colors hover:text-primary"
-                href="#"
-              >
-                LinkedIn
-              </a>
-            </li>
-            <li>
-              <a
-                className="font-body text-sm text-[#393835]/70 transition-colors hover:text-primary"
-                href="#"
-              >
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a
-                className="font-body text-sm text-[#393835]/70 transition-colors hover:text-primary"
-                href="#"
-              >
-                X (Twitter)
-              </a>
-            </li>
-            <li>
-              <a
-                className="font-body text-sm text-[#393835]/70 transition-colors hover:text-primary"
-                href="#"
-              >
-                Instagram
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div className="md:col-span-1">
-          <h6 className="mb-6 font-headline text-sm font-bold uppercase tracking-widest">
-            Legal
-          </h6>
-          <p className="mb-4 font-body text-sm leading-relaxed text-[#393835]/70">
-            © {new Date().getFullYear()} Samba Software. Built with soul.
-          </p>
-          <div className="flex gap-4">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-container-highest">
-              <span className="material-symbols-outlined text-sm">privacy_tip</span>
-            </div>
-            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-surface-container-highest">
-              <span className="material-symbols-outlined text-sm">description</span>
+
+        <div className="flex flex-col justify-between md:col-span-1">
+          <div className="rounded-2xl bg-surface-container-highest p-6">
+            <p className="mb-4 text-xs font-bold tracking-tight text-on-surface-variant">
+              STAY IN THE LOOP
+            </p>
+            <div className="flex gap-2">
+              <input
+                className="flex-1 rounded-lg border-0 bg-white text-xs focus:ring-2 focus:ring-primary/40"
+                placeholder="Email"
+                type="text"
+              />
+              <button type="button" className="rounded-lg bg-primary p-2 text-on-primary">
+                <span className="material-symbols-outlined text-sm">arrow_forward</span>
+              </button>
             </div>
           </div>
+          <p className="mt-8 text-[10px] text-on-surface-variant/50">
+            © {new Date().getFullYear()} Samba Software. Built with soul.
+          </p>
         </div>
       </div>
     </footer>
